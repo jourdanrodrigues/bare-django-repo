@@ -1,0 +1,19 @@
+#!/bin/sh
+while read oldrev newrev refname
+do
+    if [ ${refname} == "refs/heads/master" ]; then
+        APP_PATH=$(dirname `pwd`)
+        GIT_WORK_TREE=. git checkout -f
+        GIT_WORK_TREE=. git reset --hard
+        cp ${APP_PATH}/.env .
+        PYTHON_PATH=${APP_PATH}/lib_test/python2.7
+
+        SHOW_REQUIREMENTS=1 /usr/local/bin/python2.7 setup.py install | while read -r requirement
+        do
+            PATH=${PYTHON_PATH}:${PATH} easy_install-2.7 --install-dir=${PYTHON_PATH} --script-dir=${APP_PATH}/bin ${requirement}
+        done
+        . ${APP_PATH}/apache2/bin/restart
+
+    fi
+done
+
