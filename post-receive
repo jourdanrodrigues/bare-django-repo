@@ -2,7 +2,7 @@
 while read oldrev newrev refname
 do
     if [ ${refname} == "refs/heads/master" ]; then
-        # Put function "check_error", "success", "error" and "section" in the scope
+        # Put functions "check_error", "success", "error" and "section" in the scope
         source ./hooks/log_messages.sh
 
         # Set the necessary locations
@@ -22,8 +22,16 @@ do
         source ${PROJECT_PATH}/env/bin/activate
         cd ${PROJECT_PATH}
 
-        section "Install project requirements"
+        section "Install project's requirements"
         pip install -e .
+        check_error $?
+
+        section "Get project's static files"
+        python manage.py collectstatic --no-input > /dev/null
+        check_error $?
+
+        section "Compile project's messages"
+        python manage.py compilemessages > /dev/null
         check_error $?
 
         section "Apply the migrations"
@@ -31,7 +39,7 @@ do
         check_error $?
 
         section "Restart Apache server"
-        . ${APP_PATH}/apache2/bin/restart
+        ${APP_PATH}/apache2/bin/restart
         check_error $?
 
         success "Deploy performed successfully"
