@@ -7,7 +7,6 @@ SECTION='\033[1;33m'
 function space () {
     echo ""
     printf -- "-----> ${1}${NC}\n"
-    echo ""
 }
 
 function section () {
