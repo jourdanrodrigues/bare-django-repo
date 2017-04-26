@@ -1,10 +1,10 @@
 #!/bin/sh
+# Put functions "check_error", "success", "error" and "section" in the scope
+source ./utils/log_messages.sh
+
 while read oldrev newrev refname
 do
     if [ ${refname} == "refs/heads/master" ]; then
-        # Put functions "check_error", "success", "error" and "section" in the scope
-        source ./utils/log_messages.sh
-
         # Set the necessary locations
         PROJECT_PATH=$(dirname `pwd`)
         APP_PATH=$(dirname ${PROJECT_PATH})
@@ -44,5 +44,7 @@ do
         check_error $?
 
         success "Deploy performed successfully"
+    else
+        error "Not the master branch. Deployment process skiped."
     fi
 done
