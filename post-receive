@@ -19,11 +19,12 @@ do
         check_error $?
 
         section "Activate the virtual environment"
-        source ${PROJECT_PATH}/env/bin/activate
         cd ${PROJECT_PATH}
+        source ${PROJECT_PATH}/env/bin/activate
+        check_error $?
 
         section "Install project's requirements"
-        pip install -e .
+        pip install -qe .
         check_error $?
 
         section "Get project's static files"
