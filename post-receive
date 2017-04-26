@@ -2,20 +2,38 @@
 while read oldrev newrev refname
 do
     if [ ${refname} == "refs/heads/master" ]; then
-        APP_PATH=$(dirname `pwd`)
-        PYTHONPATH=${APP_PATH}/lib/python2.7
+        # Put function "check_error", "success", "error" and "section" in the scope
+        source ./hooks/log_messages.sh
 
-        GIT_WORK_TREE=. git checkout -f
-        GIT_WORK_TREE=. git reset --hard
+        # Set the necessary locations
+        PROJECT_PATH=$(dirname `pwd`)
+        APP_PATH=$(dirname ${PROJECT_PATH})
 
-        cp ${APP_PATH}/.env .
+        GIT_WORK_TREE=${PROJECT_PATH} git checkout -f
+        GIT_WORK_TREE=${PROJECT_PATH} git reset --hard
 
-        SHOW_REQUIREMENTS=1 /usr/local/bin/python2.7 setup.py install | while read -r requirement
-        do
-            easy_install-2.7 --install-dir=${PYTHONPATH} --script-dir=${APP_PATH}/bin ${requirement}
-        done
+        section "Set project's environment"
+        ENV_FILE=${APP_PATH}/.env
+        for line in $(cat ${ENV_FILE}); do echo ${line}; done
+        cp ${ENV_FILE} ${PROJECT_PATH}
+        check_error $?
+
+        section "Activate the virtual environment"
+        source ${PROJECT_PATH}/env/bin/activate
+        cd ${PROJECT_PATH}
+
+        section "Install project requirements"
+        pip install -e .
+        check_error $?
+
+        section "Apply the migrations"
+        python manage.py migrate
+        check_error $?
+
+        section "Restart Apache server"
         . ${APP_PATH}/apache2/bin/restart
+        check_error $?
 
+        success "Deploy performed successfully"
     fi
 done
-
