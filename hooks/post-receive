@@ -3,7 +3,7 @@ while read oldrev newrev refname
 do
     if [ ${refname} == "refs/heads/master" ]; then
         # Put functions "check_error", "success", "error" and "section" in the scope
-        source ./hooks/log_messages.sh
+        source ./utils/log_messages.sh
 
         # Set the necessary locations
         PROJECT_PATH=$(dirname `pwd`)

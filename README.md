@@ -1,5 +1,7 @@
-# Git-Hooks
+# Bare Django Repository
 
-## [post-receive](https://github.com/dewayinc/git-hooks/blob/master/post-receive)
+## [post-receive](https://github.com/dewayinc/git-hooks/blob/master/hooks/post-receive)
 
-Automatically installs the dependencies and restarts the Apache server.
+Place the environment file; installs the dependencies; collects the static files; compiles the messages and restarts the Apache server.
+
+## [Logging functions](https://github.com/dewayinc/git-hooks/blob/master/utils/log_messages.sh)

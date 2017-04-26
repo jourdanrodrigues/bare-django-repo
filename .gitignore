@@ -1,0 +1,11 @@
+*
+
+# Files
+!/.gitignore
+!/hooks/post-receive
+!/README.md
+
+# Directories
+!/utils/*
+
+!*/
