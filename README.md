@@ -1,5 +1,5 @@
 # Git-Hooks
 
-## post-receive
+## [post-receive](https://github.com/dewayinc/git-hooks/blob/master/post-receive)
 
-This hook automatically installs the dependencies and restarts the server.
+Automatically installs the dependencies and restarts the Apache server.
