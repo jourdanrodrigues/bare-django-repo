@@ -1,4 +1,6 @@
 #!/bin/sh
+./utils/pull_updates.sh
+
 # Put functions "check_error", "success", "error" and "section" in the scope
 source ./utils/log_messages.sh
 
