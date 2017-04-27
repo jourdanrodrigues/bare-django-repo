@@ -4,6 +4,10 @@
 
 source ./utils/log_messages.sh
 
+section "Check dependencies"
+./utils/check_dependencies.sh
+check_error $?
+
 while read oldrev newrev refname; do
   if [ ${refname} == "refs/heads/master" ]; then
     # Set the necessary locations
@@ -23,22 +27,30 @@ while read oldrev newrev refname; do
     cd ${PROJECT_PATH}
     source ${PROJECT_PATH}/env/bin/activate
     check_error $?
+    log $(python --version 2>&1) # Solution source: http://stackoverflow.com/a/23862813/4694834
+    log "$(pip --version)"
 
     section "Install project's requirements"
-    pip install -qe .
+    pip install -qr requirements.txt
     check_error $?
 
     section "Get project's static files"
-    python manage.py collectstatic --no-input > /dev/null
+    python manage.py collectstatic --no-input
     check_error $?
 
-    section "Compile project's messages"
-    python manage.py compilemessages > /dev/null
-    check_error $?
-
-    section "Apply the migrations"
-    python manage.py migrate
-    check_error $?
+    if [ -f app.json ]; then
+      section "Run commands from \"scripts.webfaction.prerestart\" list found in \"app.json\""
+      cat app.json | jq -r '.scripts.webfaction.prerestart[]?' | while read COMMAND; do
+        if [ "${COMMAND}" != "" ]; then
+          log "Run \"${COMMAND}\""
+          ${COMMAND}
+          check_error $?
+        fi
+      done
+    else
+      log "\"app.json\" not found."
+      log "Check \"https://github.com/dewayinc/bare-django-repo\" for more info about \"app.json\" file."
+    fi
 
     section "Restart Apache server"
     ${APP_PATH}/apache2/bin/restart
@@ -46,6 +58,6 @@ while read oldrev newrev refname; do
 
     success "Deploy performed successfully"
   else
-    error "Not the master branch. Deployment process skiped."
+    error "Not the master branch. Deployment process skipped."
   fi
 done
