@@ -4,7 +4,7 @@ source ${UTILS_PATH}/log_messages.sh
 
 if [ -f app.json ]; then
   section "Run commands from \"scripts.webfaction.prerestart\" list found in \"app.json\""
-  cat app.json | jq -r '.scripts.webfaction.prerestart[]?' | while read COMMAND; do
+  cat app.json | ${DEPLOY_BIN}/jq -r '.scripts.webfaction.prerestart[]?' | while read COMMAND; do
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
       ${COMMAND}

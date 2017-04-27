@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 export UTILS_PATH=`pwd`/utils # Export to be used in called files
+export DEPLOY_BIN=${HOME}/deploy_opt/bin
+mkdir -p ${DEPLOY_BIN}
+
 ${UTILS_PATH}/pull_updates.sh
 
 source ${UTILS_PATH}/log_messages.sh
