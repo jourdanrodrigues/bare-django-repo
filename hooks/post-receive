@@ -5,47 +5,47 @@
 source ./utils/log_messages.sh
 
 while read oldrev newrev refname; do
-    if [ ${refname} == "refs/heads/master" ]; then
-        # Set the necessary locations
-        PROJECT_PATH=$(dirname `pwd`)
-        APP_PATH=$(dirname ${PROJECT_PATH})
+  if [ ${refname} == "refs/heads/master" ]; then
+    # Set the necessary locations
+    PROJECT_PATH=$(dirname `pwd`)
+    APP_PATH=$(dirname ${PROJECT_PATH})
 
-        GIT_WORK_TREE=${PROJECT_PATH} git checkout -f
-        GIT_WORK_TREE=${PROJECT_PATH} git reset --hard
+    GIT_WORK_TREE=${PROJECT_PATH} git checkout -f
+    GIT_WORK_TREE=${PROJECT_PATH} git reset --hard
 
-        section "Set project's environment"
-        ENV_FILE=${APP_PATH}/.env
-        for line in $(cat ${ENV_FILE}); do echo ${line}; done
-        cp ${ENV_FILE} ${PROJECT_PATH}
-        check_error $?
+    section "Set project's environment"
+    ENV_FILE=${APP_PATH}/.env
+    for line in $(cat ${ENV_FILE}); do echo ${line}; done
+    cp ${ENV_FILE} ${PROJECT_PATH}
+    check_error $?
 
-        section "Activate the virtual environment"
-        cd ${PROJECT_PATH}
-        source ${PROJECT_PATH}/env/bin/activate
-        check_error $?
+    section "Activate the virtual environment"
+    cd ${PROJECT_PATH}
+    source ${PROJECT_PATH}/env/bin/activate
+    check_error $?
 
-        section "Install project's requirements"
-        pip install -qe .
-        check_error $?
+    section "Install project's requirements"
+    pip install -qe .
+    check_error $?
 
-        section "Get project's static files"
-        python manage.py collectstatic --no-input > /dev/null
-        check_error $?
+    section "Get project's static files"
+    python manage.py collectstatic --no-input > /dev/null
+    check_error $?
 
-        section "Compile project's messages"
-        python manage.py compilemessages > /dev/null
-        check_error $?
+    section "Compile project's messages"
+    python manage.py compilemessages > /dev/null
+    check_error $?
 
-        section "Apply the migrations"
-        python manage.py migrate
-        check_error $?
+    section "Apply the migrations"
+    python manage.py migrate
+    check_error $?
 
-        section "Restart Apache server"
-        ${APP_PATH}/apache2/bin/restart
-        check_error $?
+    section "Restart Apache server"
+    ${APP_PATH}/apache2/bin/restart
+    check_error $?
 
-        success "Deploy performed successfully"
-    else
-        error "Not the master branch. Deployment process skiped."
-    fi
+    success "Deploy performed successfully"
+  else
+    error "Not the master branch. Deployment process skiped."
+  fi
 done

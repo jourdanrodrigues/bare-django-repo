@@ -1,6 +1,7 @@
 *
 
 # Files
+!/.editorconfig
 !/.gitignore
 !/hooks/post-receive
 !/README.md
