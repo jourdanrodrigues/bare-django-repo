@@ -1,9 +1,23 @@
 # Bare Django Repository
 
-## [post-receive](https://github.com/dewayinc/git-hooks/blob/master/hooks/post-receive)
+## Expected app structure
 
-Place the environment file; installs the dependencies; collects the static files; compiles the messages and restarts the Apache server.
+```
+. <Your app path>
++---- apache2/
++---- backend/ <Your project path>
+|   +---- .git/ <This project as a bare repo>
+|   +---- env/
+|   +---- *
++---- .env <App environment variables>
+```
 
-## [Logging functions](https://github.com/dewayinc/git-hooks/blob/master/utils/log_messages.sh)
+## How to
 
-Functions for the logging to be more vivid.
+- [Create a new app][new_app]
+- [Migrate from an old app][old_app]
+- [Setup an `app.json` for the project][app_json]
+
+[app_json]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APPJSON.md
+[new_app]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/NEWAPP.md
+[old_app]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/OLDAPP.md
