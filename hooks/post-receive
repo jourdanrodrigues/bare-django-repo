@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-./utils/pull_updates.sh
+export UTILS_PATH=`pwd`/utils # Export to be used in called files
+${UTILS_PATH}/pull_updates.sh
 
-source ./utils/log_messages.sh
+source ${UTILS_PATH}/log_messages.sh
 
 section "Check dependencies"
-./utils/check_dependencies.sh
+${UTILS_PATH}/check_dependencies.sh
 check_error $?
 
 while read oldrev newrev refname; do
@@ -30,27 +31,15 @@ while read oldrev newrev refname; do
     log $(python --version 2>&1) # Solution source: http://stackoverflow.com/a/23862813/4694834
     log "$(pip --version)"
 
-    section "Install project's requirements"
-    pip install -qr requirements.txt
-    check_error $?
+    # External file due to possibility of improvement
+    ${UTILS_PATH}/install_requirements.sh
 
     section "Get project's static files"
     python manage.py collectstatic --no-input
     check_error $?
 
-    if [ -f app.json ]; then
-      section "Run commands from \"scripts.webfaction.prerestart\" list found in \"app.json\""
-      cat app.json | jq -r '.scripts.webfaction.prerestart[]?' | while read COMMAND; do
-        if [ "${COMMAND}" != "" ]; then
-          log "Run \"${COMMAND}\""
-          ${COMMAND}
-          check_error $?
-        fi
-      done
-    else
-      log "\"app.json\" not found."
-      log "Check \"https://github.com/dewayinc/bare-django-repo\" for more info about \"app.json\" file."
-    fi
+    # External file due to possibility of improvement
+    ${UTILS_PATH}/read_app_json.sh
 
     section "Restart Apache server"
     ${APP_PATH}/apache2/bin/restart

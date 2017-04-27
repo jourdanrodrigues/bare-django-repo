@@ -3,7 +3,7 @@
 command -v jq > /dev/null # Check for JQ https://stedolan.github.io/jq/
 if [[ ${?} -ne 0 ]]; then
   ORIGINAL_PATH=`pwd` # Save current directory
-  source ./utils/log_messages.sh
+  source ${UTILS_PATH}/log_messages.sh
   log "Install \"jq\""
 
   JQ=jq-1.5 # See https://github.com/stedolan/jq/releases/ for new releases

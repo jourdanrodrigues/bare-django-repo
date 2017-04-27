@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./utils/log_messages.sh
+source ${UTILS_PATH}/log_messages.sh
 
 log "Pull possible updates for deployment automation"
 git --git-dir=./.git/ pull
