@@ -4,8 +4,7 @@
 # Put functions "check_error", "success", "error" and "section" in the scope
 source ./utils/log_messages.sh
 
-while read oldrev newrev refname
-do
+while read oldrev newrev refname; do
     if [ ${refname} == "refs/heads/master" ]; then
         # Set the necessary locations
         PROJECT_PATH=$(dirname `pwd`)
