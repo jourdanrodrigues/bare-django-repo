@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 NC='\033[0m'
 ERROR='\033[0;31m'
 SUCCESS='\033[0;32m'
@@ -23,4 +24,5 @@ function check_error () {
   else
     space "${SUCCESS}OK"
   fi
+  return $1
 }
