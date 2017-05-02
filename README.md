@@ -6,9 +6,9 @@
 . <Your app path>
 +---- apache2/
 +---- backend/ <Your project path>
++---- backend.git/
 |   +---- .git/ <This project as a bare repo>
-|   +---- env/
-|   +---- *
++---- env/
 +---- .env <App environment variables>
 ```
 

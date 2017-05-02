@@ -26,8 +26,8 @@ function success () {
 function check_error () {
   if [ ${1} -ne 0 ]; then
     print_to_screen "${ERROR}Something went wrong"
+    exit ${1}
   else
     print_to_screen "${SUCCESS}OK"
   fi
-  return ${1}
 }

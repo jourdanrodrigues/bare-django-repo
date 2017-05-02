@@ -3,7 +3,7 @@
 TMP_PATH=${HOME}/tmp
 mkdir -p ${TMP_PATH} # Create it if does not exist
 
-command -v ${DEPLOY_BIN}/jq > /dev/null # Check for JQ https://stedolan.github.io/jq/
+command -v ${BIN_PATH}/jq > /dev/null # Check for JQ https://stedolan.github.io/jq/
 if [[ ${?} -ne 0 ]]; then
   ORIGINAL_PATH=`pwd` # Save current directory
   source ${UTILS_PATH}/log_messages.sh
@@ -14,13 +14,13 @@ if [[ ${?} -ne 0 ]]; then
     cd ${TMP_PATH}/${JQ}
   else
     cd ${TMP_PATH}/
-    curl -OL https://github.com/stedolan/jq/releases/download/${JQ}/${JQ}.tar.gz > /dev/null
+    curl -OL https://github.com/stedolan/jq/releases/download/${JQ}/${JQ}.tar.gz
     tar xfz ${JQ}.tar.gz
     rm -rf ${JQ}.tar.gz
     cd ${JQ}
-    ./configure --disable-maintainer-mode --prefix=$(dirname ${DEPLOY_BIN}) > /dev/null
-    make > /dev/null
   fi
+  ./configure --disable-maintainer-mode --prefix=$(dirname ${BIN_PATH}) > /dev/null
+  make > /dev/null
   make install > /dev/null
   check_error $?
 
