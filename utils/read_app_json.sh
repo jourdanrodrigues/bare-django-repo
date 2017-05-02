@@ -3,8 +3,8 @@
 source ${UTILS_PATH}/log_messages.sh
 
 if [ -f app.json ]; then
-  section "Run commands from \"scripts.webfaction.prerestart\" list found in \"app.json\""
-  cat app.json | ${BIN_PATH}/jq -r '.scripts.webfaction.prerestart[]?' | while read COMMAND; do
+  section "Run commands from \"scripts.webfaction.postdeploy\" list found in \"app.json\""
+  cat app.json | ${BIN_PATH}/jq -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
       ${COMMAND}
