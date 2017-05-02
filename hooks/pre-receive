@@ -8,8 +8,6 @@ source ${UTILS_PATH}/log_messages.sh
 
 while read oldrev newrev refname; do
   if [ ${refname} == "refs/heads/master" ]; then
-    log "Pre-receive started."
-
     section "Check dependencies"
     ${UTILS_PATH}/check_dependencies.sh
     check_error $?
@@ -31,7 +29,11 @@ while read oldrev newrev refname; do
 
     ${UTILS_PATH}/install_requirements.sh
 
-    log "Pre-receive ended."
+    ${UTILS_PATH}/read_app_json.sh
+
+    ${UTILS_PATH}/restart_server.sh
+
+    success "Deployment performed successfully!"
   else
     error "Not the master branch. Deployment process aborted."
     exit 1
