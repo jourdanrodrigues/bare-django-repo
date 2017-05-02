@@ -10,9 +10,7 @@ while read oldrev newrev refname; do
 
   ${UTILS_PATH}/read_app_json.sh
 
-  section "Restart Apache server"
-  ${APP_PATH}/apache2/bin/restart
-  check_error $?
+  ${UTILS_PATH}/restart_server.sh
 
   log "Post-receive ended."
   echo ""
