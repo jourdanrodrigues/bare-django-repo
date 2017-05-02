@@ -12,7 +12,7 @@
 +---- .env <App environment variables>
 ```
 
-## How to
+## How to...
 
 - [Create a new app][new_app]
 - [Migrate from an old app][old_app]
