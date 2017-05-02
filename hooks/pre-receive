@@ -15,9 +15,7 @@ while read oldrev newrev refname; do
     git archive $newrev | tar -x -C ${PROJECT_PATH}
 
     section "Set project's environment"
-    ENV_FILE=${APP_PATH}/.env
-    for line in $(cat ${ENV_FILE}); do echo ${line}; done
-    cp ${ENV_FILE} ${PROJECT_PATH}
+    cp ${APP_PATH}/.env ${PROJECT_PATH}
     check_error $?
 
     section "Activate the virtual environment"
