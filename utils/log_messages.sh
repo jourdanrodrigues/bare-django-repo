@@ -23,6 +23,11 @@ function success () {
   print_to_screen "${SUCCESS}${1}"
 }
 
+function error () {
+  print_to_screen "${ERROR}${1}"
+  exit 1
+}
+
 function check_error () {
   if [ ${1} -ne 0 ]; then
     print_to_screen "${ERROR}Something went wrong"

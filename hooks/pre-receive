@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+source ./utils/set_paths.sh
+
+${UTILS_PATH}/pull_updates.sh
+
+source ${UTILS_PATH}/log_messages.sh
+
+while read oldrev newrev refname; do
+  if [ ${refname} == "refs/heads/master" ]; then
+    log "Pre-receive started."
+
+    section "Check dependencies"
+    ${UTILS_PATH}/check_dependencies.sh
+    check_error $?
+
+    git archive $newrev | tar -x -C ${PROJECT_PATH}
+
+    section "Set project's environment"
+    ENV_FILE=${APP_PATH}/.env
+    for line in $(cat ${ENV_FILE}); do echo ${line}; done
+    cp ${ENV_FILE} ${PROJECT_PATH}
+    check_error $?
+
+    section "Activate the virtual environment"
+    cd ${PROJECT_PATH}
+    source ${APP_PATH}/env/bin/activate
+    check_error $?
+    log $(python --version 2>&1) # Solution source: http://stackoverflow.com/a/23862813/4694834
+    log "$(pip --version)"
+
+    ${UTILS_PATH}/install_requirements.sh
+
+    log "Pre-receive ended."
+  else
+    error "Not the master branch. Deployment process aborted."
+    exit 1
+  fi
+done
+
+exit 0

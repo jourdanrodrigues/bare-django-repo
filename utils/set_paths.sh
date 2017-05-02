@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+export UTILS_PATH=`pwd`/utils
+
+export BIN_PATH=${HOME}/bin
+mkdir -p ${BIN_PATH}
+
+CURRENT_DIRECTORY=$(dirname `pwd`)
+export APP_PATH=$(dirname ${CURRENT_DIRECTORY})
+
+PROJECT_DIRECTORY=$(basename ${CURRENT_DIRECTORY}) # Trick to get directory name without ".git"
+export PROJECT_PATH=${APP_PATH}/${PROJECT_DIRECTORY%.git}
+mkdir -p ${PROJECT_PATH}

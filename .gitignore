@@ -4,6 +4,7 @@
 !/.editorconfig
 !/.gitignore
 !/hooks/post-receive
+!/hooks/pre-receive
 !/README.md
 
 # Directories

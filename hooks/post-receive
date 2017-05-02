@@ -1,60 +1,20 @@
 #!/usr/bin/env bash
 
-export UTILS_PATH=`pwd`/utils # Export to be used in called files
-export BIN_PATH=${HOME}/bin
-mkdir -p ${BIN_PATH}
-
-${UTILS_PATH}/pull_updates.sh
-
+source ./utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
-section "Check dependencies"
-${UTILS_PATH}/check_dependencies.sh
-check_error $?
-
 while read oldrev newrev refname; do
-  if [ ${refname} == "refs/heads/master" ]; then
-    # Set the necessary locations
-    CURRENT_DIRECTORY=$(dirname `pwd`)
-    APP_PATH=$(dirname ${CURRENT_DIRECTORY})
+  log "Post-receive started."
 
-    PROJECT_DIRECTORY=$(basename ${CURRENT_DIRECTORY}) # Trick to get directory name without ".git"
-    PROJECT_PATH=${APP_PATH}/${PROJECT_DIRECTORY%.git}
-    mkdir -p ${PROJECT_PATH}
+  cd ${PROJECT_PATH}
 
-    export GIT_WORK_TREE=${PROJECT_PATH}
-    git checkout -f
-    git reset --hard
+  ${UTILS_PATH}/read_app_json.sh
 
-    section "Set project's environment"
-    ENV_FILE=${APP_PATH}/.env
-    for line in $(cat ${ENV_FILE}); do echo ${line}; done
-    cp ${ENV_FILE} ${PROJECT_PATH}
-    check_error $?
+  section "Restart Apache server"
+  ${APP_PATH}/apache2/bin/restart
+  check_error $?
 
-    section "Activate the virtual environment"
-    cd ${PROJECT_PATH}
-    source ${APP_PATH}/env/bin/activate
-    check_error $?
-    log $(python --version 2>&1) # Solution source: http://stackoverflow.com/a/23862813/4694834
-    log "$(pip --version)"
-
-    # External file due to possibility of improvement
-    ${UTILS_PATH}/install_requirements.sh
-
-    section "Get project's static files"
-    python manage.py collectstatic --no-input
-    check_error $?
-
-    # External file due to possibility of improvement
-    ${UTILS_PATH}/read_app_json.sh
-
-    section "Restart Apache server"
-    ${APP_PATH}/apache2/bin/restart
-    check_error $?
-
-    success "Deploy performed successfully"
-  else
-    error "Not the master branch. Deployment process skipped."
-  fi
+  log "Post-receive ended."
+  echo ""
+  success "Deployment performed successfully!"
 done
