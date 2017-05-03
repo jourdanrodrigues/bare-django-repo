@@ -11,19 +11,25 @@ Lets get it started... :slightly_smiling_face:
 
 1. In the app directory, remove everything that is not the Apache directory;
 
-2. Touch a file `.env` file with the environment variables you use;
+> An empty `.env` file will be created here, but you can touch and fill it already
 
-> TL;DR the next 2 steps: `mkdir -p backend.git/.git/ && cd $_` (then, jump to step 5)
+> TL;DR the next 2 steps: `mkdir -p backend.git/.git/ && cd $_` (then, jump to step 4)
 
-3. Make a directory called `backend.git`[<sup>1</sup>][tutorial_notes_link];
+2. Make a directory called `backend.git`;
 
-4. In the `backend.git` directory, make a directory called `.git`;
+> Actually could be `something_else.git`, but lets make `backend.git` a pattern...
 
-5. In the `.git` directory, clone this repo with `git clone https://github.com/dewayinc/bare-django-repo.git .`[<sup>2</sup>][tutorial_notes_link];
+3. In the `backend.git` directory, make a directory called `.git`;
 
-6. Make it a [bare repo][bare_repo_link] with `git init --bare`;
+4. In the `.git` directory, clone this repo with `git clone https://github.com/dewayinc/bare-django-repo.git .`;
 
-7. Back to the app path (`cd ../../`), create a virtual environment folder with `virtualenv -p /usr/local/bin/pythonX.Y --prompt="(<your project name>)"`[<sup>3</sup>][tutorial_notes_link].
+> Do **not** forget the final dot
+
+5. Make it a [bare repo][bare_repo_link] with `git init --bare`;
+
+6. Run the command `./deploy.sh` to generate the basics for the project.
+
+> Note: if you use a Python version different than 2.7, you have to set an [`app.json`][app_json_link] and [push a deploy](#pushing-to-production).
 
 Finished with the server setup. :tada:
 
@@ -35,13 +41,4 @@ On your local git repo, add the server as a git remote for deployment:
 
 Now you are able to `git push webfaction` to update the production server. :heart_eyes:
 
-## Tutorial notes
-
-1 - Actually, `something_else.git`, but lets make `backend.git` a pattern...
-
-2 - Do **not** forget the final dot
-
-3 - The "X.Y" is the Python version (of course)
-
 [bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
-[tutorial_notes_link]: #tutorial-notes

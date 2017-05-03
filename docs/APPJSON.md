@@ -6,6 +6,22 @@ For more detailed info about the `app.json`, go [here][app_json_link].
 
 This deployment process can be customized by setting the following configurations:
 
+## Python version
+
+```json
+{
+  "environments": {
+    "webfaction": {
+      "python": "3.6"
+    }
+  }
+}
+```
+
+The default Python version set is "2.7".
+
+**Note:** Check in the server for Python versions available.
+
 ## Post deploy scripts
 
 ```json
