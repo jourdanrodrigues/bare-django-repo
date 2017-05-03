@@ -37,7 +37,7 @@ The default Python version set is "2.7".
 }
 ```
 
-The commands you specify on the `postdeploy` list will be execute in the specified order and their failure may
+The commands you specify on the `postdeploy` list will be executed in the specified order and their failure may
 reject the push, **but there is not a rollback yet**.
 
 
