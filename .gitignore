@@ -10,6 +10,7 @@
 
 # Directories
 !/docs/*
+!/features/*
 !/utils/*
 
 !*/

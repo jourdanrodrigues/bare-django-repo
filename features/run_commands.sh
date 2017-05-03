@@ -11,7 +11,7 @@ if [ -f ${APP_JSON} ]; then
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
       ${COMMAND}
-      [ $? -ne 0 ] && exit 1
+      [ $? -eq 0 ] && exit 0 || exit 1
     fi
   done
 fi
