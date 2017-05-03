@@ -3,5 +3,9 @@
 source ${UTILS_PATH}/log_messages.sh
 
 section "Install project's requirements"
-pip install -r requirements.txt
+if [ -f setup.py ]; then
+  pip install -e .
+else if [ -f requirements.txt ]; then
+  pip install -r requirements.txt
+fi
 check_error $?
