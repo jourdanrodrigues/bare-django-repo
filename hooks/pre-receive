@@ -14,7 +14,8 @@ while read oldrev newrev refname; do
 
     git archive $newrev | tar -x -C ${PROJECT_PATH}
 
-    section "Set project's environment"
+    section "Set project's environment variables"
+    touch ${APP_PATH}/.env
     cp ${APP_PATH}/.env ${PROJECT_PATH}
     check_error $?
 

@@ -14,7 +14,7 @@ Lets get it started... :slightly_smiling_face:
 
 > Before removing the project directory, make sure it is uploaded to an external git repository (GitHub, BitBucket etc.), **or the project code will be lost for good!**
 
-2. Touch a file `.env` file with the environment variables you use (this file must exist!);
+2. Touch a file `.env` file with the environment variables you use;
 
 > TL;DR the next 2 steps: `mkdir -p <project directory>.git/.git/ && cd $_` (then, jump to step 5)
 
