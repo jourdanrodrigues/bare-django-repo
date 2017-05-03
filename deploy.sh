@@ -37,3 +37,5 @@ ${FEATS_PATH}/restart_server.sh
 check_error $?
 
 success "Deployment performed successfully!"
+
+exit 0
