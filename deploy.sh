@@ -5,6 +5,11 @@ cd $(dirname ${0})
 source `pwd`/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
+if [ ! -f ${PROJECT_PATH}/app.json ]; then
+  log "\"app.json\" not found."
+  log "Check \"https://github.com/dewayinc/bare-django-repo/blob/master/docs/APPJSON.md\" for more info about \"app.json\" file."
+fi
+
 section "Check dependencies"
 ${UTILS_PATH}/check_dependencies.sh
 check_error $?

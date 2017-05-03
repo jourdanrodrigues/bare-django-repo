@@ -13,7 +13,4 @@ if [ -f ${APP_JSON} ]; then
       check_error $?
     fi
   done
-else
-  log "\"app.json\" not found."
-  log "Check \"https://github.com/dewayinc/bare-django-repo\" for more info about \"app.json\" file."
 fi
