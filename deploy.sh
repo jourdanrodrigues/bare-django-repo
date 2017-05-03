@@ -5,6 +5,9 @@ cd $(dirname ${0}) # Guarantee this file location as the working directory
 source `pwd`/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
+# Create a "redeploy.sh" file to manually run the deploy.
+[ ! -f ${APP_PATH}/redeploy.sh ] && echo "`pwd`/deploy.sh" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
+
 if [ ! -f ${PROJECT_PATH}/app.json ]; then
   section "\"app.json\" not found."
   log "Check \"https://github.com/dewayinc/bare-django-repo/blob/master/docs/APPJSON.md\" for more info about \"app.json\" file."

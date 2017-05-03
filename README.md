@@ -1,6 +1,6 @@
 # Bare Django Repository
 
-## Expected app structure
+## Final app structure
 
 ```
 . <Your app path>
@@ -8,7 +8,8 @@
 +---- backend/ <Your project path>
 +---- backend.git/
 |   +---- .git/ <This project as a bare repo>
-+---- env/
++---- redeploy.sh/
++---- env/ <Virtual environment>
 +---- .env <App environment variables>
 ```
 
