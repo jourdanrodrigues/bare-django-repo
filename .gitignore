@@ -1,6 +1,7 @@
 *
 
 # Files
+!/deploy.sh
 !/.editorconfig
 !/.gitignore
 !/hooks/post-receive
