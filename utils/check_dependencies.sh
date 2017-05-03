@@ -44,7 +44,7 @@ if [[ ${?} -ne 0 ]]; then
     tar xfz ${VENV_VERSION}.tar.gz
     cd ${VENV_PATH}
   fi
-  python setup.py install > /dev/null
+  python2.7 setup.py install > /dev/null
   [ $? -eq 0 ] && exit 0 || exit 1
 
   cd ${ORIGINAL_PATH}
