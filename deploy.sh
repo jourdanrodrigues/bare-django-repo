@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd $(dirname ${0})
+
 source `pwd`/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
