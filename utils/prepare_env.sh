@@ -21,7 +21,7 @@ if [ ! -d ${ENV_PATH} ]; then
 
   section "Create virtual environment with Python ${PYTHON_VERSION} for \"${APP_NAME}\""
   virtualenv -p /usr/local/bin/python${PYTHON_VERSION} --prompt="(${APP_NAME})" ${ENV_PATH}
-  check_error $?
+  [ $? -eq 0 ] && exit 0 || exit 1
 fi
 
 # Solution source: https://community.webfaction.com/questions/18791/why-can-my-virtualenv-still-see-system-site-packages/18792

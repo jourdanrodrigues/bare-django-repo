@@ -23,7 +23,7 @@ if [[ ${?} -ne 0 ]]; then
   ./configure --disable-maintainer-mode --prefix=$(dirname ${BIN_PATH}) > /dev/null
   make > /dev/null
   make install > /dev/null
-  check_error $?
+  [ $? -eq 0 ] && exit 0 || exit 1
 
   cd ${ORIGINAL_PATH}
 fi
@@ -45,7 +45,7 @@ if [[ ${?} -ne 0 ]]; then
     cd ${VENV_PATH}
   fi
   python setup.py install > /dev/null
-  check_error $?
+  [ $? -eq 0 ] && exit 0 || exit 1
 
   cd ${ORIGINAL_PATH}
 fi

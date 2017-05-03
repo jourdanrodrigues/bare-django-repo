@@ -4,13 +4,14 @@ source ${UTILS_PATH}/log_messages.sh
 
 APP_JSON=${PROJECT_PATH}/app.json
 
+section "Run commands from \"scripts.webfaction.postdeploy\" in \"app.json\""
+
 if [ -f ${APP_JSON} ]; then
-  section "Run commands from \"scripts.webfaction.postdeploy\" list found in \"app.json\""
   cat ${APP_JSON} | ${BIN_PATH}/jq -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
       ${COMMAND}
-      check_error $?
+      [ $? -ne 0 ] && exit 1
     fi
   done
 fi
