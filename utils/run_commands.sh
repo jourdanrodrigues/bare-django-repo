@@ -2,9 +2,11 @@
 
 source ${UTILS_PATH}/log_messages.sh
 
-if [ -f app.json ]; then
+APP_JSON=${PROJECT_PATH}/app.json
+
+if [ -f ${APP_JSON} ]; then
   section "Run commands from \"scripts.webfaction.postdeploy\" list found in \"app.json\""
-  cat app.json | ${BIN_PATH}/jq -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
+  cat ${APP_JSON} | ${BIN_PATH}/jq -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
       ${COMMAND}
