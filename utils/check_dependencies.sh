@@ -7,7 +7,7 @@ ORIGINAL_PATH=`pwd` # Save current directory
 source ${UTILS_PATH}/log_messages.sh
 
 # Install/Upgrade pip
-if [[ $(command -v pip) > /dev/null ] && [[ ! "$(pip --version)" =~ '^pip 9\.0\.1' ]]; then
+if [[ $(command -v pip) > /dev/null ]] && [[ ! "$(pip --version)" =~ '^pip 9\.0\.1' ]]; then
   cd ${TMP_PATH}
   curl -OL https://bootstrap.pypa.io/get-pip.py
   python2.7 get-pip.py > /dev/null
