@@ -6,6 +6,15 @@ mkdir -p ${TMP_PATH} # Create it if does not exist
 ORIGINAL_PATH=`pwd` # Save current directory
 source ${UTILS_PATH}/log_messages.sh
 
+# Install/Upgrade pip
+if [[ $(command -v pip) > /dev/null ] && [[ ! "$(pip --version)" =~ '^pip 9\.0\.1' ]]; then
+  cd ${TMP_PATH}
+  curl -OL https://bootstrap.pypa.io/get-pip.py
+  python2.7 get-pip.py > /dev/null
+  rm -rf get-pip.py
+  cd ${ORIGINAL_PATH}
+fi
+
 command -v ${BIN_PATH}/jq > /dev/null # Check for JQ https://stedolan.github.io/jq/
 if [[ ${?} -ne 0 ]]; then
   log "Install \"jq\""
