@@ -23,9 +23,12 @@ log $(python --version 2>&1) # Solution source: http://stackoverflow.com/a/23862
 log "$(pip --version)"
 
 ${UTILS_PATH}/install_requirements.sh
+check_error $?
 
 ${UTILS_PATH}/run_commands.sh
+check_error $?
 
 ${UTILS_PATH}/restart_server.sh
+check_error $?
 
 success "Deployment performed successfully!"
