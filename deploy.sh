@@ -24,7 +24,7 @@ log "$(pip --version)"
 
 ${UTILS_PATH}/install_requirements.sh
 
-${UTILS_PATH}/read_app_json.sh
+${UTILS_PATH}/run_commands.sh
 
 ${UTILS_PATH}/restart_server.sh
 
