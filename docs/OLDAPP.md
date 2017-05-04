@@ -10,11 +10,9 @@ Lets get it started... :slightly_smiling_face:
 
 ## Setup the server
 
-1. In the app directory, remove everything that is not the Apache or the project directory;
+1. In the app directory, copy everything there to a directory called `backup` then remove everything but the Apache directory;
 
 > An empty `.env` file will be created here, but you can touch and fill it already
-
-> Before removing the project directory, make sure it is uploaded to an external git repository (GitHub, BitBucket etc.), **or the project code will be lost for good!**
 
 > TL;DR the next 2 steps: `mkdir -p <project directory>.git/.git/ && cd $_` (then, jump to step 4)
 

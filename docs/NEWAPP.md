@@ -9,7 +9,7 @@ Lets get it started... :slightly_smiling_face:
 
 ## Setup the server
 
-1. In the app directory, remove everything that is not the Apache directory;
+1. In the app directory, remove everything but the Apache directory;
 
 > An empty `.env` file will be created here, but you can touch and fill it already
 
