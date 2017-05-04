@@ -7,7 +7,6 @@ ${UTILS_PATH}/pull_updates.sh
 
 while read oldrev newrev refname; do
   if [ ${refname} == "refs/heads/master" ]; then
-    cp -r ${PROJECT_PATH} ${PROJECT_PATH}.backup
     git archive $newrev | tar -x -C ${PROJECT_PATH}
 
     ./deploy.sh
