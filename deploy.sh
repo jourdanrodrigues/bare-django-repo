@@ -2,11 +2,19 @@
 
 cd $(dirname ${0}) # Guarantee this file location as the working directory
 
+while getopts :a opt; do
+  # "./<this_file> -a" to check for pip
+  case ${opt} in
+    a) export CHECK_PIP=true # Not actually a boolean, just sets the variable
+    ;;
+  esac
+done
+
 source `pwd`/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
 # Create a "redeploy.sh" file to manually run the deploy.
-[ ! -f ${APP_PATH}/redeploy.sh ] && echo "`pwd`/deploy.sh" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
+[ ! -f ${APP_PATH}/redeploy.sh ] && echo "`pwd`/$(basename ${0}) -a" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
 
 if [ ! -f ${PROJECT_PATH}/app.json ]; then
   section "\"app.json\" not found."

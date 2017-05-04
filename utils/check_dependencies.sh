@@ -11,13 +11,15 @@ ORIGINAL_PATH=`pwd` # Save current directory
 source ${UTILS_PATH}/log_messages.sh
 
 # Install/Upgrade pip
-if [ ! $(command -v pip) > /dev/null ] || [[ ! $(pip --version) =~ $(echo "^pip (9|1[0-9])\.[0-9]+\.[1-9]") ]]; then
-  log "Install/upgrade \"pip\""
-  cd ${TMP_PATH}
-  curl -OL https://bootstrap.pypa.io/get-pip.py || exit 1
-  python2.7 get-pip.py
-  rm -rf get-pip.py
-  cd ${ORIGINAL_PATH}
+if [ ${CHECK_PIP} ]; then
+  if [ ! $(command -v pip) > /dev/null ] || [[ ! $(pip --version) =~ $(echo "^pip (9|1[0-9])\.[0-9]+\.[1-9]") ]]; then
+    log "Install/upgrade \"pip\""
+    cd ${TMP_PATH}
+    curl -OL https://bootstrap.pypa.io/get-pip.py || exit 1
+    python2.7 get-pip.py
+    rm -rf get-pip.py
+    cd ${ORIGINAL_PATH}
+  fi
 fi
 
 # Check for JQ https://stedolan.github.io/jq/

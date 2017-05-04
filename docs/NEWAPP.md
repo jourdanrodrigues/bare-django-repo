@@ -27,7 +27,9 @@ Lets get it started... :slightly_smiling_face:
 
 5. Make it a [bare repo][bare_repo_link] with `git init --bare`;
 
-6. Run the command `./deploy.sh` to generate the basics for the project.
+6. Run the command `./deploy.sh -a` to generate the basics for the project.
+
+> The "-a" parameter is to make checks over "pip" too.
 
 > Note: if you use a Python version different than 2.7, you have to set an [`app.json`][app_json_link] and [push a deploy](#pushing-to-production).
 
