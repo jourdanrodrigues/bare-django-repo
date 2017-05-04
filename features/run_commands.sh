@@ -7,7 +7,7 @@ APP_JSON=${PROJECT_PATH}/app.json
 section "Run commands from \"scripts.webfaction.postdeploy\" in \"app.json\""
 
 if [ -f ${APP_JSON} ]; then
-  cat ${APP_JSON} | ${BIN_PATH}/jq -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
+  cat ${APP_JSON} | ${JQ_BIN} -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
       ${COMMAND}

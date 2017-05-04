@@ -14,7 +14,7 @@ if [ ! -f ${PROJECT_PATH}/app.json ]; then
 fi
 
 section "Check dependencies"
-${UTILS_PATH}/check_dependencies.sh
+source ${UTILS_PATH}/check_dependencies.sh # Source because it brings the bin variables
 check_error $?
 
 section "Set project's environment variables"
