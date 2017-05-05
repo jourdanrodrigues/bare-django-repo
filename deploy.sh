@@ -2,13 +2,8 @@
 
 cd $(dirname ${0}) # Guarantee this file location as the working directory
 
-while getopts :a opt; do
-  # "./<this_file> -a" to check for pip
-  case ${opt} in
-    a) export CHECK_PIP=true # Not actually a boolean, just sets the variable
-    ;;
-  esac
-done
+# "./<this_file> -a" to check for pip
+while getopts :a opt; do [ ${opt} == a ] && export CHECK_PIP=true; done
 
 source `pwd`/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
