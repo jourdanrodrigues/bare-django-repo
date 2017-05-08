@@ -2,15 +2,16 @@
 
 source ./utils/set_paths.sh -b
 ${UTILS_PATH}/pull_updates.sh
+source ${UTILS_PATH}/log_messages.sh
 
 while read oldrev newrev refname; do
   if [ ${refname} == "refs/heads/master" ]; then
-
     git archive $newrev | tar -xC ${PROJECT_PATH}
 
-    ./deploy.sh
+    log "Start deployment process ($(date "${DATETIME_FORMAT}"))" | ${SAVE_TO_LOG}
+    ./deploy.sh | ${SAVE_TO_LOG}
+    log "End deployment process ($(date "${DATETIME_FORMAT}"))\n" | ${SAVE_TO_LOG}
   else
-    ${UTILS_PATH}/log_messages
     error "Not the master branch. Deployment process aborted."
     exit 1
   fi
