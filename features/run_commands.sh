@@ -15,4 +15,4 @@ if [ -f ${APP_JSON} ]; then
   done
 fi
 
-exit 0
+exit $?
