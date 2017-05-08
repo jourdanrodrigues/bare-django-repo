@@ -23,7 +23,9 @@ if [ ! ${PATHS_SET} ]; then
   fi
   mkdir -p ${PROJECT_PATH}
 
-  export SAVE_TO_LOG="/usr/bin/tee -a ${APP_PATH}/build.log"
+  export LOGS_PATH=${APP_PATH}/logs && mkdir -p ${LOGS_PATH}
+
+  export SAVE_TO_LOG="/usr/bin/tee -a ${LOGS_PATH}/build.log"
 
   export DATETIME_FORMAT="+%d/%m/%Y %H:%M:%S"
 
