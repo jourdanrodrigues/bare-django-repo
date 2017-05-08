@@ -10,8 +10,7 @@ if [ -f ${APP_JSON} ]; then
   cat ${APP_JSON} | ${JQ_BIN} -r '.scripts.webfaction.postdeploy[]?' | while read COMMAND; do
     if [ "${COMMAND}" != "" ]; then
       log "Run \"${COMMAND}\""
-      ${COMMAND}
-      [ $? -ne 0 ] && exit 1
+      ${COMMAND} || exit 1
     fi
   done
 fi
