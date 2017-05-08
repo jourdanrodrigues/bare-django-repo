@@ -30,7 +30,6 @@ cd ${PROJECT_PATH}
 ${FEATS_PATH}/prepare_env.sh
 source ${APP_PATH}/env/bin/activate
 check_error $?
-log $(python --version 2>&1) # Solution source: http://stackoverflow.com/a/23862813/4694834
 log "$(pip --version)"
 
 ${FEATS_PATH}/install_requirements.sh
@@ -41,6 +40,11 @@ check_error $?
 
 ${FEATS_PATH}/restart_server.sh
 check_error $?
+
+if [ -f ${PROJECT_PATH}/app.json ]; then
+  # Put the "app.json" in the app path to keep the last configuration to compare in the next build
+  cp ${PROJECT_PATH}/app.json ${APP_PATH}
+fi
 
 success "Deployment performed successfully!"
 
