@@ -1,25 +1,29 @@
 #!/usr/bin/env bash
 
-# "./<this_file> -b" to perform the backup
-while getopts :b opt; do [ ${opt} == b ] && BACKUP=true; done
+if [ ! ${PATHS_SET} ]; then
+  export PATHS_SET=true
 
-export UTILS_PATH=`pwd`/utils
-export FEATS_PATH=`pwd`/features
+  # "./<this_file> -b" to perform the backup
+  while getopts :b opt; do [ ${opt} == b ] && BACKUP=true; done
 
-export BIN_PATH=${HOME}/bin
-mkdir -p ${BIN_PATH}
+  export UTILS_PATH=`pwd`/utils
+  export FEATS_PATH=`pwd`/features
 
-CURRENT_DIRECTORY=$(dirname `pwd`)
-export APP_PATH=$(dirname ${CURRENT_DIRECTORY})
+  export BIN_PATH=${HOME}/bin
+  mkdir -p ${BIN_PATH}
 
-PROJECT_DIRECTORY=$(basename ${CURRENT_DIRECTORY}) # Trick to get directory name without ".git"
-export PROJECT_PATH=${APP_PATH}/${PROJECT_DIRECTORY%.git}
-if [ ${BACKUP} ] && [ -d ${PROJECT_PATH} ]; then # Perfoms a simple backup
-  rm -rf ${PROJECT_PATH}.backup
-  mv ${PROJECT_PATH} ${PROJECT_PATH}.backup
-fi
-mkdir -p ${PROJECT_PATH}
+  CURRENT_DIRECTORY=$(dirname `pwd`)
+  export APP_PATH=$(dirname ${CURRENT_DIRECTORY})
 
-if [ -f /usr/bin/sed ]; then export SED_BIN=/usr/bin/sed
-elif [ -f /bin/sed ]; then export SED_BIN=/bin/sed
+  PROJECT_DIRECTORY=$(basename ${CURRENT_DIRECTORY}) # Trick to get directory name without ".git"
+  export PROJECT_PATH=${APP_PATH}/${PROJECT_DIRECTORY%.git}
+  if [ ${BACKUP} ] && [ -d ${PROJECT_PATH} ]; then # Perfoms a simple backup
+    rm -rf ${PROJECT_PATH}.backup
+    mv ${PROJECT_PATH} ${PROJECT_PATH}.backup
+  fi
+  mkdir -p ${PROJECT_PATH}
+
+  if [ -f /usr/bin/sed ]; then export SED_BIN=/usr/bin/sed
+  elif [ -f /bin/sed ]; then export SED_BIN=/bin/sed
+  fi
 fi
