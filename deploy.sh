@@ -18,28 +18,28 @@ fi
 
 section "Check dependencies"
 source ${UTILS_PATH}/check_dependencies.sh # Source because it brings the bin variables
-check_error $?
+check_error ${?}
 
 section "Set project's environment variables"
 touch ${APP_PATH}/.env
 cp ${APP_PATH}/.env ${PROJECT_PATH}
-check_error $?
+check_error ${?}
 
 section "Activate the virtual environment"
 cd ${PROJECT_PATH}
 ${FEATS_PATH}/prepare_env.sh
 source ${APP_PATH}/env/bin/activate
-check_error $?
+check_error ${?}
 log "$(pip --version)"
 
 ${FEATS_PATH}/install_requirements.sh
-check_error $?
+check_error ${?}
 
 ${FEATS_PATH}/run_commands.sh
-check_error $?
+check_error ${?}
 
 ${FEATS_PATH}/restart_server.sh
-check_error $?
+check_error ${?}
 
 if [ -f ${PROJECT_PATH}/app.json ]; then
   # Put the "app.json" in the app path to keep the last configuration to compare in the next build
