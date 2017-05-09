@@ -9,7 +9,7 @@ source `pwd`/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
 # Create a "redeploy.sh" file to manually run the deploy.
-[ ! -f ${APP_PATH}/redeploy.sh ] && echo "`pwd`/$(basename ${0}) -a | ${SAVE_TO_LOG}" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
+echo "`pwd`/$(basename ${0}) -a 2>&1 | ${SAVE_TO_LOG}" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
 
 if [ ! -f ${PROJECT_PATH}/app.json ]; then
   section "\"app.json\" not found."
