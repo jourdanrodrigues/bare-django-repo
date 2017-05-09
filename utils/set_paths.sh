@@ -15,11 +15,12 @@ if [ ! ${PATHS_SET} ]; then
   CURRENT_DIRECTORY=$(dirname `pwd`)
   export APP_PATH=$(dirname ${CURRENT_DIRECTORY})
 
-  PROJECT_DIRECTORY=$(basename ${CURRENT_DIRECTORY}) # Trick to get directory name without ".git"
-  export PROJECT_PATH=${APP_PATH}/${PROJECT_DIRECTORY%.git}
+  export BACKUPS_PATH=${APP_PATH}/backups && mkdir -p ${BACKUPS_PATH}
+
+  PROJECT_DIRECTORY=$(basename ${CURRENT_DIRECTORY%.git}) # Trick to get directory name without ".git"
+  export PROJECT_PATH=${APP_PATH}/${PROJECT_DIRECTORY}
   if [ ${BACKUP} ] && [ -d ${PROJECT_PATH} ]; then # Perfoms a simple backup
-    rm -rf ${PROJECT_PATH}.backup
-    mv ${PROJECT_PATH} ${PROJECT_PATH}.backup
+    rm -rf ${BACKUPS_PATH}/${PROJECT_DIRECTORY} && mv ${PROJECT_PATH} ${BACKUPS_PATH}
   fi
   mkdir -p ${PROJECT_PATH}
 
