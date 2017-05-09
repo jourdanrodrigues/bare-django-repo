@@ -18,7 +18,7 @@ Lets get it started... :slightly_smiling_face:
 
 2. Make a directory called `<project directory>.git`;
 
-3. In the `backend.git` directory, make a directory called `.git`;
+3. In the `<project directory>.git` directory, make a directory called `.git`;
 
 4. In the `.git` directory, clone this repo with `git clone https://github.com/dewayinc/bare-django-repo.git .`;
 
@@ -38,7 +38,7 @@ Finished with the server setup. :tada:
 
 On your local git repo, add the server as a git remote for deployment:
 
-`git remote add webfaction <user>@web<server number>.webfaction.com:webapps/<app directory>/backend.git`
+`git remote add webfaction <user>@web<server number>.webfaction.com:webapps/<app directory>/<project directory>.git`
 
 Now you are able to `git push webfaction` to update the production server. :heart_eyes:
 
