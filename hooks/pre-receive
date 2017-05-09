@@ -8,9 +8,12 @@ while read oldrev newrev refname; do
   if [ ${refname} == "refs/heads/master" ]; then
     git archive $newrev | tar -xC ${PROJECT_PATH}
 
-    log "Start deployment process ($(date "${DATETIME_FORMAT}"))" | ${SAVE_TO_LOG}
-    ./deploy.sh | ${SAVE_TO_LOG}
-    log "End deployment process ($(date "${DATETIME_FORMAT}"))\n" | ${SAVE_TO_LOG}
+    log "Start deployment process ($(date "${DATETIME_FORMAT}"))" 2>&1 | ${SAVE_TO_LOG}
+
+    ./deploy.sh 2>&1 | ${SAVE_TO_LOG}
+    check_error ${PIPESTATUS[0]} # Solution source: http://stackoverflow.com/a/6871917/4694834
+
+    log "End deployment process ($(date "${DATETIME_FORMAT}"))\n" 2>&1 | ${SAVE_TO_LOG}
   else
     error "Not the master branch. Deployment process aborted."
     exit 1

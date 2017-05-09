@@ -17,29 +17,23 @@ if [ ! -f ${PROJECT_PATH}/app.json ]; then
 fi
 
 section "Check dependencies"
-source ${UTILS_PATH}/check_dependencies.sh # Source because it brings the bin variables
-check_error ${?}
+source ${UTILS_PATH}/check_dependencies.sh || exit 1 # Source because it brings the bin variables
 
 section "Set project's environment variables"
 touch ${APP_PATH}/.env
-cp ${APP_PATH}/.env ${PROJECT_PATH}
-check_error ${?}
+cp ${APP_PATH}/.env ${PROJECT_PATH} || exit 1
 
 section "Activate the virtual environment"
 cd ${PROJECT_PATH}
 ${FEATS_PATH}/prepare_env.sh
-source ${APP_PATH}/env/bin/activate
-check_error ${?}
+source ${APP_PATH}/env/bin/activate || exit 1
 log "$(pip --version)"
 
-${FEATS_PATH}/install_requirements.sh
-check_error ${?}
+${FEATS_PATH}/install_requirements.sh || exit 1
 
-${FEATS_PATH}/run_commands.sh
-check_error ${?}
+${FEATS_PATH}/run_commands.sh || exit 1
 
-${FEATS_PATH}/restart_server.sh
-check_error ${?}
+${FEATS_PATH}/restart_server.sh || exit 1
 
 if [ -f ${PROJECT_PATH}/app.json ]; then
   # Put the "app.json" in the app path to keep the last configuration to compare in the next build
