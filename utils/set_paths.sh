@@ -33,4 +33,6 @@ if [ ! ${PATHS_SET} ]; then
   if [ -f /usr/bin/sed ]; then export SED_BIN=/usr/bin/sed
   elif [ -f /bin/sed ]; then export SED_BIN=/bin/sed
   fi
+
+  export DATE_BIN=/bin/date
 fi
