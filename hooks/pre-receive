@@ -11,7 +11,11 @@ while read oldrev newrev refname; do
     log "Start deployment process ($(date "${DATETIME_FORMAT}"))" 2>&1 | ${SAVE_TO_LOG}
 
     ./deploy.sh 2>&1 | ${SAVE_TO_LOG}
-    check_error ${PIPESTATUS[0]} # Solution source: http://stackoverflow.com/a/6871917/4694834
+    if [ ${PIPESTATUS} ]; then # Solution source: http://stackoverflow.com/a/6871917/4694834
+      check_error ${PIPESTATUS[0]}
+    elif [ ${pipestatus} ]; then # Improvement for "zsh": https://unix.stackexchange.com/a/14276
+      check_error ${pipestatus[0]}
+    fi
 
     log "End deployment process ($(date "${DATETIME_FORMAT}"))\n" 2>&1 | ${SAVE_TO_LOG}
   else
