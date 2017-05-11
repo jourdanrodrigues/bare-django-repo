@@ -26,10 +26,11 @@
 ## Features
 
 - Creates a virtual environment for your project on the app root (named `env`);
-- Rebuils the virtual environment if the project's Python version changes;
+- Rebuilds the virtual environment if the project's Python version changes;
+- Accepts project's dependencies defined in `requirements.txt` or `setup.py`;
 - Updates the Apache configuration according to the project;
-- Installs required dependencies automatically if they don't exist in the server;
-- Runs custom commands after a successful deployment;
+- Automatically installs required dependencies, if they don't exist in the server (like `virtualenv`);
+- Runs custom commands after a successful deployment.
 
 [app_json]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APP_JSON.md
 [new_app]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/NEW_APP.md

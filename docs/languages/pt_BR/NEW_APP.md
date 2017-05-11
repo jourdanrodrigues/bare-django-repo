@@ -12,10 +12,10 @@ Vamos começar... :slightly_smiling_face:
 1. No diretório do aplicativo, remova tudo menos o diretório do Apache;
 
 > Um arquivo vazio `.env` vai ser criado aqui, mas você já pode criá-lo e
-preenchê-lo
+preenchê-lo.
 
 > TL;DR os próximos 2 passos: `mkdir -p backend.git/.git/ && cd $_` (então, pule
-para o passo 4)
+para o passo 4).
 
 2. Crie um diretório chamado `backend.git`;
 

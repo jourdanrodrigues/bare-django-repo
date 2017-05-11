@@ -6,7 +6,8 @@ No seu repositório local Git, adicione o servidor como `git remote`:
 
 `git remote add webfaction <user>@web<server number>.webfaction.com:webapps/<app directory>/<project directory>.git`
 
-Agora você pode executar `git push webfaction` para atualizar o servidor. :heart_eyes:
+Agora você pode executar `git push webfaction` para atualizar o servidor.
+:heart_eyes:
 
 [Ir para o início][readme]
 

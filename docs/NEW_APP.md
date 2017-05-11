@@ -13,17 +13,21 @@ Lets get it started... :slightly_smiling_face:
 
 1. In the app directory, remove everything but the Apache directory;
 
-> An empty `.env` file will be created here, but you can touch and fill it already
+> An empty `.env` file will be created here, but you can touch and fill it
+already.
 
-> TL;DR the next 2 steps: `mkdir -p backend.git/.git/ && cd $_` (then, jump to step 4)
+> TL;DR the next 2 steps: `mkdir -p backend.git/.git/ && cd $_` (then, jump to
+step 4).
 
 2. Make a directory called `backend.git`;
 
-> Actually could be `something_else.git`, but lets make `backend.git` a pattern...
+> Actually could be `something_else.git`, but lets make `backend.git` a
+pattern...
 
 3. In the `backend.git` directory, make a directory called `.git`;
 
-4. In the `.git` directory, clone this repo with `git clone https://github.com/dewayinc/bare-django-repo.git .`;
+4. In the `.git` directory, clone this repo with
+`git clone https://github.com/dewayinc/bare-django-repo.git .`;
 
 > **Do not forget the final dot**
 
