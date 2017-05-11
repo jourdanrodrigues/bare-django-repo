@@ -44,3 +44,4 @@ On your local git repo, add the server as a git remote for deployment:
 Now you are able to `git push webfaction` to update the production server. :heart_eyes:
 
 [bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
+[app_json_link]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APPJSON.md
