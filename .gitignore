@@ -9,7 +9,7 @@
 !/README.md
 
 # Directories
-!/docs/*
+!/docs/**
 !/features/*
 !/utils/*
 

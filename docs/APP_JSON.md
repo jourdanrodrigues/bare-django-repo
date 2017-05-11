@@ -1,6 +1,9 @@
 # `app.json`
 
-The `app.json` is a common file that describes your app and sets some configuration in herokuish based infrastructures.
+> Veja a versão em [português][portuguese_version].
+
+The `app.json` is a common file that describes your app and sets some
+configurations in herokuish based infrastructures.
 
 For more detailed info about the `app.json`, go [here][app_json_link].
 
@@ -40,5 +43,8 @@ The default Python version set is "2.7".
 The commands you specify on the `postdeploy` list will be executed in the specified order and their failure may
 reject the push, **but there is not a rollback yet**.
 
+> [Go to the beginning][readme]
 
+[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/README.md
 [app_json_link]: https://devcenter.heroku.com/articles/app-json-schema
+[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/APP_JSON.md

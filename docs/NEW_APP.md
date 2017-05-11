@@ -1,5 +1,7 @@
 # Creating a new app
 
+> Veja a versão em [português][portuguese_version].
+
 **Note**: For this guideline, is assumed:
 - you have access to WebFaction servers;
 - the app is already created through the WebFaction interface;
@@ -23,25 +25,25 @@ Lets get it started... :slightly_smiling_face:
 
 4. In the `.git` directory, clone this repo with `git clone https://github.com/dewayinc/bare-django-repo.git .`;
 
-> Do **not** forget the final dot
+> **Do not forget the final dot**
 
-5. Make it a [bare repo][bare_repo_link] with `git init --bare`;
+5. Create a [bare repo][bare_repo_link] with `git init --bare`;
 
 6. Run the command `./deploy.sh -a` to generate the basics for the project.
 
 > The "-a" parameter is to make checks over "pip" too.
 
-> Note: if you use a Python version different than 2.7, you have to set an [`app.json`][app_json_link] and [push a deploy](#pushing-to-production).
+> Note: if you use a Python version different than 2.7, you have to set an
+[`app.json`][app_json_link] in the project.
 
-Finished with the server setup. :tada:
+A [deploy][deploy_with_git] is needed for the server to be fully defined.
 
-## Pushing to production
+Finished with the server setup! :tada:
 
-On your local git repo, add the server as a git remote for deployment:
+> [Go to the beginning][readme]
 
-`git remote add webfaction <user>@web<server number>.webfaction.com:webapps/<app directory>/backend.git`
-
-Now you are able to `git push webfaction` to update the production server. :heart_eyes:
-
+[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/README.md
 [bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
-[app_json_link]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APPJSON.md
+[app_json_link]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APP_JSON.md
+[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
+[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/NEW_JSON.md

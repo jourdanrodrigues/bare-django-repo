@@ -1,14 +1,14 @@
 # Migrating an old app
 
+> Veja a versão em [português][portuguese_version].
+
 **Note**: For this guideline, is assumed:
 - you have access to WebFaction servers;
 - the app is already created and running;
 - you are already logged into the server through SSH;
-- the project has defined requirements.
+- the project has defined requirements (`requirements.txt` or `setup.py`).
 
 Lets get it started... :slightly_smiling_face:
-
-## Setup the server
 
 1. In the app directory, copy everything there to a directory called `backup` then remove everything but the Apache directory;
 
@@ -22,25 +22,23 @@ Lets get it started... :slightly_smiling_face:
 
 4. In the `.git` directory, clone this repo with `git clone https://github.com/dewayinc/bare-django-repo.git .`;
 
-> Do **not** forget the final dot
+> **Do not forget the final dot**
 
-5. Make it a [bare repo][bare_repo_link] with `git init --bare`;
+5. Create a [bare repo][bare_repo_link] with `git init --bare`;
 
-6. Run the command `./deploy.sh -a` to generate the basics for the project.
+6. Run the command `./deploy.sh -a` to update the app structure.
 
 > The "-a" parameter is to make checks over "pip" too.
 
-> Note: if you use a Python version different than 2.7, you have to set an [`app.json`][app_json_link] and [push a deploy](#pushing-to-production).
+> Note: if you use a Python version different than 2.7, you have to set an
+[`app.json`][app_json_link] in the project and [deploy][deploy_with_git].
 
-Finished with the server setup. :tada:
+Finished with the server setup! :tada:
 
-## Pushing to production
+> [Go to the beginning][readme]
 
-On your local git repo, add the server as a git remote for deployment:
-
-`git remote add webfaction <user>@web<server number>.webfaction.com:webapps/<app directory>/<project directory>.git`
-
-Now you are able to `git push webfaction` to update the production server. :heart_eyes:
-
-[app_json_link]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APPJSON.md
+[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/README.md
+[app_json_link]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APP_JSON.md
+[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
 [bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
+[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/OLD_JSON.md
