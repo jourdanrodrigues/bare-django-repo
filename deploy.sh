@@ -20,7 +20,7 @@ section "Check dependencies"
 source ${UTILS_PATH}/check_dependencies.sh || exit 1 # Source because it brings the bin variables
 
 section "Set project's environment variables"
-touch ${APP_PATH}/.env
+[ ! -f ${APP_PATH}/.env ] && echo "PRODUCTION=1" >> ${APP_PATH}/.env
 cp ${APP_PATH}/.env ${PROJECT_PATH} || exit 1
 
 section "Activate the virtual environment"
