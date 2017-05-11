@@ -44,6 +44,7 @@ Finalizamos a configuração do servidor! :tada:
 
 [readme]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
 [app_json]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/APP_JSON.md
+[bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
 [deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md
 [readme]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
 [english_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/OLD_JSON.md
