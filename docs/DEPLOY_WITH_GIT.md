@@ -10,5 +10,5 @@ Now you are able to `git push webfaction` to update the server. :heart_eyes:
 
 > [Go to the beginning][readme]
 
-[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/README.md
-[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md
+[readme]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/README.md
+[portuguese_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md

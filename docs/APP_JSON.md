@@ -49,7 +49,7 @@ push, **but there is not a rollback yet**.
 
 > [Go to the beginning][readme]
 
-[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/README.md
-[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
+[readme]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/README.md
+[deploy_with_git]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
 [app_json_link]: https://devcenter.heroku.com/articles/app-json-schema
-[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/APP_JSON.md
+[portuguese_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/APP_JSON.md

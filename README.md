@@ -32,8 +32,8 @@
 - Automatically installs required dependencies, if they don't exist in the server (like `virtualenv`);
 - Runs custom commands after a successful deployment.
 
-[app_json]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APP_JSON.md
-[new_app]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/NEW_APP.md
-[old_app]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/OLD_APP.md
-[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
-[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
+[app_json]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/APP_JSON.md
+[new_app]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/NEW_APP.md
+[old_app]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/OLD_APP.md
+[deploy_with_git]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
+[portuguese_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/README.md

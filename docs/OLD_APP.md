@@ -24,7 +24,7 @@ already.
 3. In the `<project directory>.git` directory, make a directory called `.git`;
 
 4. In the `.git` directory, clone this repo with
-`git clone https://github.com/dewayinc/bare-django-repo.git .`;
+`git clone https://github.com/jourdanrodrigues/bare-django-repo.git .`;
 
 > **Do not forget the final dot**
 
@@ -41,8 +41,8 @@ Finished with the server setup! :tada:
 
 > [Go to the beginning][readme]
 
-[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/README.md
-[app_json_link]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APP_JSON.md
-[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
+[readme]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/README.md
+[app_json_link]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/APP_JSON.md
+[deploy_with_git]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
 [bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
-[portuguese_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/OLD_JSON.md
+[portuguese_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/OLD_JSON.md

@@ -11,5 +11,5 @@ Agora você pode executar `git push webfaction` para atualizar o servidor.
 
 [Ir para o início][readme]
 
-[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
-[english_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md
+[readme]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
+[english_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/DEPLOY_WITH_GIT.md

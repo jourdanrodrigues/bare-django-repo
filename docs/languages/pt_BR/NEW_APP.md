@@ -25,7 +25,7 @@ padrão...
 3. Dentro do diretório `backend.git`, crie um diretório chamado `.git`;
 
 4. Dentro do diretório `.git`, clone este repositório com
-`git clone https://github.com/dewayinc/bare-django-repo.git .`;
+`git clone https://github.com/jourdanrodrigues/bare-django-repo.git .`;
 
 > **Não esqueça o ponto no final**
 
@@ -45,8 +45,8 @@ Finalizamos a configuração do servidor! :tada:
 
 [Ir para o início][readme]
 
-[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
+[readme]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
 [bare_repo_link]: https://git-scm.com/book/it/v2/Git-on-the-Server-Getting-Git-on-a-Server
-[app_json]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/APP_JSON.md
-[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md
-[english_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/NEW_JSON.md
+[app_json]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/APP_JSON.md
+[deploy_with_git]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md
+[english_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/NEW_JSON.md

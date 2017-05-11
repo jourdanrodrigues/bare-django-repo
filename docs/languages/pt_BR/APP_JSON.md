@@ -50,7 +50,7 @@ rejeição do _push_, **mas ainda não há a função de retornar ao estado inic
 
 [Ir para o início][readme]
 
-[readme]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
-[deploy_with_git]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md
+[readme]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/README.md
+[deploy_with_git]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/languages/pt_BR/DEPLOY_WITH_GIT.md
 [app_json_link]: https://devcenter.heroku.com/articles/app-json-schema
-[english_version]: https://github.com/dewayinc/bare-django-repo/blob/master/docs/APP_JSON.md
+[english_version]: https://github.com/jourdanrodrigues/bare-django-repo/blob/master/docs/APP_JSON.md
