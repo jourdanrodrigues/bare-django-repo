@@ -9,7 +9,7 @@
 
 Vamos começar... :slightly_smiling_face:
 
-1. No diretório do aplicativo, remova tudo menos o diretório do Apache;
+1. No diretório do aplicativo, remova tudo, menos o diretório do Apache;
 
 > Um arquivo vazio `.env` vai ser criado aqui, mas você já pode criá-lo e
 preenchê-lo.

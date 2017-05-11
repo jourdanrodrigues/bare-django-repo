@@ -6,12 +6,12 @@
 - você tem acesso aos servidores da WebFaction;
 - o aplicativo já foi criado e está funcionando;
 - você já está conectado através de SSH ao servidor;
-- o projeto tenho dependências definidas (`requirements.txt` ou `setup.py`).
+- o projeto tem dependências definidas (`requirements.txt` ou `setup.py`).
 
 Vamos começar... :slightly_smiling_face:
 
-1. No diretório do aplicativo, copie tudo para um diretório chamado `backup`,
-então remova tudo menos o diretório do Apache;
+1. No diretório do aplicativo, copie tudo para um diretório chamado `backups`,
+então remova tudo, menos o diretório do Apache;
 
 > Um arquivo vazio `.env` vai ser criado aqui, mas você já pode criá-lo e
 preenchê-lo.

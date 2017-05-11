@@ -10,7 +10,7 @@
 
 Lets get it started... :slightly_smiling_face:
 
-1. In the app directory, copy everything there to a directory called `backup`
+1. In the app directory, copy everything there to a directory called `backups`,
 then remove everything but the Apache directory;
 
 > An empty `.env` file will be created here, but you can touch and fill it
