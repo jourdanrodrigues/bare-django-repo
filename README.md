@@ -6,14 +6,14 @@
 
 ```
 . <Your app path>
-+---- apache2/
-+---- backend/ <Your project path>
-+---- backend.git/
-|   +---- .git/ <This project as a bare repo>
-+---- logs/
-+---- redeploy.sh/
-+---- env/ <Virtual environment>
-+---- .env <App environment variables>
+|-- apache2/
+|-- backend/ <Your project path>
+|-- backend.git/
+|   `-- .git/ <This project as a bare repo>
+|-- logs/
+|-- env/ <Virtual environment>
+|-- redeploy.sh
+`-- .env <App environment variables>
 ```
 
 ## How to...

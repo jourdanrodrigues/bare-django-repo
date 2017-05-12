@@ -6,14 +6,14 @@
 
 ```
 . <Seu aplicativo>
-+---- apache2/
-+---- backend/ <Seu projeto>
-+---- backend.git/
-|   +---- .git/ <Este projeto como um repositório bare>
-+---- logs/
-+---- redeploy.sh/
-+---- env/ <Ambiente virtual>
-+---- .env <Variáveis de ambiente do aplicativo>
+|-- apache2/
+|-- backend/ <Seu projeto>
+|-- backend.git/
+|   `-- .git/ <Este projeto como um repositório bare>
+|-- logs/
+|-- env/ <Ambiente virtual>
+|-- redeploy.sh
+`-- .env <Variáveis de ambiente do aplicativo>
 ```
 
 ## Como...

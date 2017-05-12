@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 cd $(dirname ${0}) # Guarantee this file location as the working directory
+HERE_PATH=$(pwd)
 
-# "./<this_file> -a" to check for pip
+# "-a" parameter to check for pip
 while getopts :a opt; do [ ${opt} == a ] && export CHECK_PIP=true; done
 
-source `pwd`/utils/set_paths.sh
+source ${HERE_PATH}/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
 # Create a "redeploy.sh" file to manually run the deploy.
@@ -23,9 +24,9 @@ section "Set project's environment variables"
 [ ! -f ${APP_PATH}/.env ] && echo "PRODUCTION=1" >> ${APP_PATH}/.env
 cp ${APP_PATH}/.env ${PROJECT_PATH} || exit 1
 
-section "Activate the virtual environment"
 cd ${PROJECT_PATH}
 ${FEATS_PATH}/prepare_env.sh
+section "Activate the virtual environment"
 source ${APP_PATH}/env/bin/activate || exit 1
 log "$(pip --version)"
 
@@ -39,6 +40,8 @@ if [ -f ${PROJECT_PATH}/app.json ]; then
   # Put the "app.json" in the app path to keep the last configuration to compare in the next build
   cp ${PROJECT_PATH}/app.json ${APP_PATH}
 fi
+
+cp ${HERE}/version ${HERE}/version.backup
 
 success "Deployment performed successfully!"
 
