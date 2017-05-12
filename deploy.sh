@@ -41,7 +41,7 @@ if [ -f ${PROJECT_PATH}/app.json ]; then
   cp ${PROJECT_PATH}/app.json ${APP_PATH}
 fi
 
-cp ${HERE}/version ${HERE}/version.backup
+cp ${HERE_PATH}/version ${HERE_PATH}/version.backup
 
 success "Deployment performed successfully!"
 
