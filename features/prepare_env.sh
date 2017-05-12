@@ -6,7 +6,7 @@ function create_env () {
   APP_NAME=$(basename ${APP_PATH})
 
   section "Create virtual environment with Python ${PYTHON_VERSION} for \"${APP_NAME}\""
-  PYTHONPATH=${VENV_PYTHONPATH} ${VENV_BIN} -p /usr/local/bin/python${PYTHON_VERSION} --prompt="(${APP_NAME})" ${ENV_PATH} || exit 1
+  PYTHONPATH=${VENV_PYTHONPATH} ${VENV_BIN} -p /usr/local/bin/python${PYTHON_VERSION} --prompt="(${APP_NAME} Python${PYTHON_VERSION}) " ${ENV_PATH} || exit 1
 
   # Solution source: https://community.webfaction.com/questions/18791/why-can-my-virtualenv-still-see-system-site-packages/18792
   touch ${APP_PATH}/env/lib/python${PYTHON_VERSION}/sitecustomize.py
