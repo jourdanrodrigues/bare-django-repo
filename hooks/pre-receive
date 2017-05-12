@@ -8,17 +8,12 @@ while read oldrev newrev refname; do
   if [ ${refname} == "refs/heads/master" ]; then
     git archive $newrev | tar -xC ${PROJECT_PATH}
 
-    log "Start deployment process ($(${DATE_BIN} "${DATETIME_FORMAT}"))" 2>&1 | ${SAVE_TO_LOG}
+    log "Start deployment process ($(${DATE_BIN} "${DATETIME_FORMAT}"))" | ${SAVE_TO_LOG}
 
     ./deploy.sh 2>&1 | ${SAVE_TO_LOG}
-    if [ ${PIPESTATUS} ]; then # Solution source: http://stackoverflow.com/a/6871917/4694834
-      DEPLOYMENT_STATUS=${PIPESTATUS[0]}
-    elif [ ${pipestatus} ]; then # Improvement for "zsh": https://unix.stackexchange.com/a/14276
-      DEPLOYMENT_STATUS=${pipestatus[0]}
-    fi
-    check_error ${DEPLOYMENT_STATUS}
+    check_error ${PIPESTATUS[0]}${pipestatus[1]} # Solution source: https://unix.stackexchange.com/a/14276
 
-    log "End deployment process ($(${DATE_BIN} "${DATETIME_FORMAT}"))\n" 2>&1 | ${SAVE_TO_LOG}
+    log "End deployment process ($(${DATE_BIN} "${DATETIME_FORMAT}"))\n" | ${SAVE_TO_LOG}
   else
     error "Not the master branch. Deployment process aborted."
     exit 1
