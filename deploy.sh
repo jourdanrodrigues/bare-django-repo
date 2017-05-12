@@ -23,9 +23,9 @@ section "Set project's environment variables"
 [ ! -f ${APP_PATH}/.env ] && echo "PRODUCTION=1" >> ${APP_PATH}/.env
 cp ${APP_PATH}/.env ${PROJECT_PATH} || exit 1
 
-section "Activate the virtual environment"
 cd ${PROJECT_PATH}
 ${FEATS_PATH}/prepare_env.sh
+section "Activate the virtual environment"
 source ${APP_PATH}/env/bin/activate || exit 1
 log "$(pip --version)"
 
