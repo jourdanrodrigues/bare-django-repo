@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd $(dirname ${0}) # Guarantee this file location as the working directory
-HERE_PATH=$(pwd)
+export HERE_PATH=$(pwd)
 
 # "-a" parameter to check for pip
 while getopts :a opt; do [ ${opt} == a ] && export CHECK_PIP=true; done
@@ -9,8 +9,10 @@ while getopts :a opt; do [ ${opt} == a ] && export CHECK_PIP=true; done
 source ${HERE_PATH}/utils/set_paths.sh
 source ${UTILS_PATH}/log_messages.sh
 
+log "Start of deployment process ($(${DATE_BIN} "${DATETIME_FORMAT}"))"
+
 # Create a "redeploy.sh" file to manually run the deploy.
-echo "`pwd`/$(basename ${0}) -a 2>&1 | ${SAVE_TO_LOG}" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
+echo "${HERE_PATH}/$(basename ${0}) -a 2>&1 | ${SAVE_TO_LOG}" > ${APP_PATH}/redeploy.sh && chmod +x ${APP_PATH}/redeploy.sh
 
 if [ ! -f ${PROJECT_PATH}/app.json ]; then
   section "\"app.json\" not found."
@@ -44,5 +46,7 @@ fi
 cp ${HERE_PATH}/version ${HERE_PATH}/version.backup
 
 success "Deployment performed successfully!"
+
+log "End of deployment process ($(${DATE_BIN} "${DATETIME_FORMAT}"))\n"
 
 exit 0

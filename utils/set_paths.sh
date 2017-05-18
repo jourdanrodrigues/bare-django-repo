@@ -6,13 +6,13 @@ if [ ! ${PATHS_SET} ]; then
   # "./<this_file> -b" to perform the backup
   while getopts :b opt; do [ ${opt} == b ] && BACKUP=true; done
 
-  export UTILS_PATH=`pwd`/utils
-  export FEATS_PATH=`pwd`/features
+  export UTILS_PATH=${HERE_PATH}/utils
+  export FEATS_PATH=${HERE_PATH}/features
 
   export BIN_PATH=${HOME}/bin
   mkdir -p ${BIN_PATH}
 
-  CURRENT_DIRECTORY=$(dirname `pwd`)
+  CURRENT_DIRECTORY=$(dirname ${HERE_PATH})
   export APP_PATH=$(dirname ${CURRENT_DIRECTORY})
 
   export BACKUPS_PATH=${APP_PATH}/backups && mkdir -p ${BACKUPS_PATH}
