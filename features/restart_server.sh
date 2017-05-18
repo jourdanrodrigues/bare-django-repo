@@ -15,7 +15,7 @@ if [ ${SED_BIN} ]; then
   PYTHON_PATHS="s|(python-path=).*|\1${PROJECT_PATH} python-home=${APP_PATH}/env|"
   # Redefine WSGI script path
   WSGI_PATH="s|(WSGIScriptAlias .* ).*|\1${WSGI_PATH}|"
-  ${SED_BIN} -i .backup -E "${CUSTOM_LOG};${ERROR_LOG};${PYTHON_PATHS};${WSGI_PATH}" ${APACHE_CONF}
+  ${SED_BIN} -i.backup -E "${CUSTOM_LOG};${ERROR_LOG};${PYTHON_PATHS};${WSGI_PATH}" ${APACHE_CONF}
 else
   log "\"sed\" not found! Apache configuration not changed."
 fi
