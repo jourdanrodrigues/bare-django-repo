@@ -4,7 +4,7 @@ source ${UTILS_PATH}/log_messages.sh
 
 section "Install project's requirements"
 if [ -f setup.py ]; then
-  pip install -e . || exit 1
+  pip install . || exit 1
 elif [ -f requirements.txt ]; then
   pip install -r requirements.txt || exit 1
 else
