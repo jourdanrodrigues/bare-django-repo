@@ -35,7 +35,7 @@ log "$(pip --version)"
 ${FEATS_PATH}/install_requirements.sh || exit 1
 
 section "Collect static files"
-python manage.py collectstatic --no-input || exit 1
+python manage.py collectstatic --noinput || exit 1
 
 ${FEATS_PATH}/run_commands.sh || exit 1
 
