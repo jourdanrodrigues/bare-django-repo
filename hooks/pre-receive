@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export HERE_PATH=$(pwd)
 source ./utils/set_paths.sh -b
 ${UTILS_PATH}/pull_updates.sh
 source ${UTILS_PATH}/log_messages.sh
